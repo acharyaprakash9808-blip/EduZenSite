@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StudyTarget Ultimate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- INTRO SCREEN -->
+<div id="intro" class="intro">
+  <h1>StudyTarget Ultimate</h1>
+  <p>Focus. Learn. Remember. Excel.</p>
+  <button onclick="enterApp()">Start Session</button>
+</div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="focusMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b0c1b0d84.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MAIN APP -->
+<div id="app" class="container hidden">
+
+  <!-- LOGIN / SETUP -->
+  <div id="loginBox">
+    <h2>Start Your Study Journey</h2>
+    <p class="sub">Fill your details to unlock formulas, facts, and brain hacks.</p>
+
+    <input type="text" id="username" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email (Gmail preferred)">
+
+    <select id="grade" class="grade">
+      <option value="">Select Grade</option>
+      <option>Grade 6</option>
+      <option>Grade 7</option>
+      <option>Grade 8</option>
+      <option>Grade 9</option>
+      <option>Grade 10</option>
+      <option>Grade 11</option>
+      <option>Grade 12</option>
+    </select>
+
+    <select id="subject" class="subject" onchange="loadChapters()">
+      <option value="">Select Subject</option>
+      <option value="physics">Physics</option>
+      <option value="chemistry">Chemistry</option>
+      <option value="biology">Biology</option>
+      <option value="math">Mathematics</option>
+      <option value="computer">Computer Science</option>
+    </select>
+
+    <select id="chapter" class="chapter" onchange="loadContent()">
+      <option value="">Select Chapter</option>
+    </select>
+
+    <button class="primary" onclick="login()">Start Studying</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
+    <h3>Welcome, <span id="userDisplay"></span>!</h3>
+    <p id="studyInfo"></p>
+
+    <div class="grid">
+
+      <div class="card focus">
+        <h4>Focus Timer</h4>
+        <p id="timer" class="timer">00:00</p>
+        <div class="actions">
+          <button onclick="startTimer()">Start</button>
+          <button class="ghost" onclick="stopTimer()">Pause</button>
+          <button class="ghost" onclick="resetTimer()">Reset</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Important Formulas</h4>
+        <ul id="formulaBox"></ul>
+      </div>
+
+      <div class="card">
+        <h4>Definitions & Facts</h4>
+        <ul id="definitionBox"></ul>
+      </div>
+
+      <div class="card">
+        <h4>Memory Tips</h4>
+        <p id="memoryTip"></p>
+        <button onclick="toggleMusic()">🎧 Brain Music</button>
+      </div>
+
+    </div>
+
+    <button class="logout" onclick="logout()">End Session</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
